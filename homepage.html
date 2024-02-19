@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="searching.png">
+    <title>Find ME!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .welcome-heading {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: monospace;
+            color: #d3d3d3;
+        }
+        .search-box {
+            position: relative;
+            width: 800px;
+            height: 60px;
+        }
+        .search-input {
+            width: calc(100% - 40px);
+            height: calc(100% - 20px);
+            padding: 10px;
+            font-size: 24px;
+            background-color: #000;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            outline: none;
+            color: #D3D3D3;
+            padding-left: 30px;
+            padding-right: 30px;
+            font-family: monospace;
+        }
+        .search-input::placeholder {
+            color: #888;
+        }
+        .neon-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            pointer-events: none;
+            animation: neon-pulse 2s infinite alternate;
+        }
+        @keyframes neon-pulse {
+            0% {
+                border: 3px solid #0ff;
+            }
+            50% {
+                border: 3px solid #00f;
+            }
+            100% {
+                border: 3px solid #0ff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="welcome-heading">Hey! FrostMelon</h1>
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="Find ME!!!">
+            <div class="neon-border"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("searchInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                let query = this.value.trim();
+                if (query !== "") {
+                    window.location.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
